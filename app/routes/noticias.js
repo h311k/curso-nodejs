@@ -1,11 +1,11 @@
 module.exports = (app) => {
     
     app.get('/noticias', (req, res) => {
+        app.app.controllers.noticias.noticias(app, req, res)
+        
+    })
 
-        let connection = app.config.dbConnection()
-        let noticiasModel = app.app.models.noticiasModel
-        noticiasModel.getNoticias(connection, (err, result) => {
-            res.render('noticias/noticias', {noticias: result})
-        })
+    app.get('/noticia', (req, res) => {
+        app.app.controllers.noticias.noticia(app, req, res)
     })
 }
